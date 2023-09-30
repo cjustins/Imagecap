@@ -43,7 +43,7 @@ def predict_image(frame):
     predictions = model.predict(frame)
     label = decode_predictions(predictions, top=1)[0][0]
 
-    return f"Image feature: {predictions} {label[1]} ({label[2] * 100:.2f}%)"
+    return f"Image feature: {predictions[0]} {label[1]} ({label[2] * 100:.2f}%)"
 
     
 
