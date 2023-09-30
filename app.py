@@ -35,7 +35,6 @@ def predict_image(frame):
     # # print the classification
     # return f"{label[1]} {label[2]*100}"
     # Preprocess the frame
-    frame = cv2.resize(frame, (224, 224))
     frame = img_to_array(frame)
     frame = np.expand_dims(frame, axis=0)
     frame = preprocess_input(frame)
