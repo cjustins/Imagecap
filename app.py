@@ -60,6 +60,10 @@ if uploaded_file is not None:
                 # Save frame
                 frame_path = os.path.join("frames", f"frame_{count}.jpg")
                 cv2.imwrite(frame_path, image)
+                frame_image = load_img(frame_path, target_size=(224, 224))
+                frame_label = predict_image(frame_image)
+                # Display prediction
+                st.write(f"Frame {count + 1} prediction: {frame_label}")
                 # Read the next frame
                 success, image = vidcap.read()
                 count += 1
