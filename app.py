@@ -77,7 +77,7 @@ if uploaded_file is not None:
                     #frame_image = load_img(frame_path)
                     frame_label = predict_image(image)
                     # Display prediction
-                    st.write(f"Frame {count + 1} prediction: {frame_label}")
+                    st.write(f"Frame {count + 1}: {frame_label}")
                 except:
                     continue
                 # Read the next frame
