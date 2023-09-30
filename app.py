@@ -16,7 +16,7 @@ from keras.models import load_model
 model= load_model('image_cap_model.h5')
 
 def predict_image(frame):
-    model = VGG16()
+    model = VGG16(weights='imagenet')
     # # load an image from file
     # image = load_img(image, target_size=(224, 224))
     # # convert the image pixels to a numpy array
