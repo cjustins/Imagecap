@@ -13,7 +13,7 @@ from keras.applications.vgg16 import preprocess_input
 from PIL import Image
 from keras.models import load_model
 
-model= load_model('image_cap_model.h5',compile=(False))
+model= load_model('image_cap_model.h5')
 
 def predict_image(image):
     model = VGG16()
