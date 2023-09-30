@@ -10,3 +10,4 @@ tensorflow
 tensorflow-cpu
 tensorflow-estimator
 tensorflow-io-gcs-filesystem
+mesa
