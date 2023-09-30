@@ -70,7 +70,6 @@ if uploaded_file is not None:
             count = 0
             while success:
                 # Save frame
-                image = Image.open(image)
                 frame_path = os.path.join("frames", f"frame_{count}.jpg")
                 cv2.imwrite(frame_path, image)
                 #frame_image = load_img(frame_path)
