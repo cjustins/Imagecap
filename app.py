@@ -72,6 +72,8 @@ if uploaded_file is not None:
                 # Save frame
                 frame_path = os.path.join("frames", f"frame_{count}.jpg")
                 cv2.imwrite(frame_path, image)
+                image=Image.open(frame_path)
+                #image=image.resize((224, 224), Image.ANTIALIAS) 
                 #frame_image = load_img(frame_path)
                 frame_label = predict_image(image)
                 # Display prediction
