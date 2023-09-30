@@ -10,6 +10,10 @@ import tempfile
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
+from PIL import Image
+from keras.models import load_model
+
+model= load_model('image_cap_model.h5',compile=(False))
 
 def predict_image(image):
     model = VGG16()
@@ -53,9 +57,9 @@ if uploaded_file is not None:
             count = 0
             while success:
                  # Classify frame
-                #frame_label = predict_image(image)
+                frame_label = predict_image(image)
                 # Display prediction
-                #st.write(f"Frame {count + 1} prediction: {frame_label}")
+                st.write(f"Frame {count + 1} prediction: {frame_label}")
                 # Save frame
                 frame_path = os.path.join("frames", f"frame_{count}.jpg")
                 cv2.imwrite(frame_path, image)
