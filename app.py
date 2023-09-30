@@ -24,7 +24,7 @@ def predict_image(image):
     # reshape data for the model
     #image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     # prepare the image for the VGG model
-    image = resize(image, (224, 224))
+    #image = resize(image, (224, 224))
     # expand dimensions to match the batch size of 1
     image = np.expand_dims(image, axis=0)
     image = preprocess_input(image)
