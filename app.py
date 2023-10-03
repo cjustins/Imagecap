@@ -64,7 +64,7 @@ if uploaded_file is not None:
         # Save frame
         frame_path = os.path.join("frames", f"frame_{count}.jpg")
         cv2.imwrite(frame_path, image)
-        try:
+    try:
             image=Image.open(frame_path)
             image=image.resize((224, 224)) 
             #frame_image = load_img(frame_path)
