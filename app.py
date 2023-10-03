@@ -60,7 +60,7 @@ if uploaded_file is not None:
     vidcap = cv2.VideoCapture(tfile.name)
     success, image = vidcap.read()
     count = 0
-    while success and count < 4:
+    while success and count < 2:
         # Save frame
         frame_path = os.path.join("frames", f"frame_{count}.jpg")
         cv2.imwrite(frame_path, image)
