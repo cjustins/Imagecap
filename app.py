@@ -48,8 +48,6 @@ def predict_image(frame):
     
 
 st.title("Video description")
-st.write("Upload a video (Max size: 2MB)")
-
 # Video Upload
 uploaded_file = st.file_uploader("Upload a video", type=["mp4", "mov"])
 
