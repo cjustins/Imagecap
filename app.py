@@ -54,39 +54,33 @@ st.write("Upload a video (Max size: 2MB)")
 uploaded_file = st.file_uploader("Upload a video", type=["mp4", "mov"])
 
 if uploaded_file is not None:
-        # Check file size
-        max_size = 2 * 1024 * 1024  # Maximum file size in bytes (2MB)
-        file_size = len(uploaded_file.getvalue())
-        if file_size <= max_size:
-            st.success("Video uploaded successfully.")
-            # Create frames directory
-            os.makedirs("frames", exist_ok=True)
-            # Split video into frames
-            tfile = tempfile.NamedTemporaryFile(delete=False)
-            tfile.write(uploaded_file.read())
-            vidcap = cv2.VideoCapture(tfile.name)
-            success, image = vidcap.read()
-            count = 0
-            while success and count < 2:
-                # Save frame
-                frame_path = os.path.join("frames", f"frame_{count}.jpg")
-                cv2.imwrite(frame_path, image)
-                try:
-                    image=Image.open(frame_path)
-                    image=image.resize((224, 224)) 
-                    #frame_image = load_img(frame_path)
-                    frame_label = predict_image(image)
-                    # Display prediction
-                    st.write(f"Frame {count + 1}: {frame_label}")
-                except:
-                    continue
-                # Read the next frame
-                success, image = vidcap.read()
-                count += 1
+    st.success("Video uploaded successfully.")
+    os.makedirs("frames", exist_ok=True)
+    # Split video into frames
+    tfile = tempfile.NamedTemporaryFile(delete=False)
+    tfile.write(uploaded_file.read())
+    vidcap = cv2.VideoCapture(tfile.name)
+    success, image = vidcap.read()
+    count = 0
+    while success and count < 2:
+        # Save frame
+        frame_path = os.path.join("frames", f"frame_{count}.jpg")
+        cv2.imwrite(frame_path, image)
+        try:
+            image=Image.open(frame_path)
+            image=image.resize((224, 224)) 
+            #frame_image = load_img(frame_path)
+            frame_label = predict_image(image)
+            # Display prediction
+            st.write(f"Frame {count + 1}: {frame_label}")
+        except:
+            continue
+        # Read the next frame
+        success, image = vidcap.read()
+        count += 1
 
-            st.success("Frames saved successfully.")
-        else:
-            st.error("File size exceeds the limit of 2MB. Please upload a smaller video.")
+    st.success("Frames saved successfully.")
+        
 
             
             
